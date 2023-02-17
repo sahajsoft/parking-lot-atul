@@ -28,4 +28,8 @@ class Operator {
     private fun calculateFees(numberOfHours: Int, chargeForAnHour: Int): Int {
         return numberOfHours * chargeForAnHour
     }
+
+    fun resetTicketIds() {
+        ticketId = 1
+    }
 }
