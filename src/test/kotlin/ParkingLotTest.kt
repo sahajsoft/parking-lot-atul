@@ -68,13 +68,13 @@ class ParkingLotTest {
     @Test
     fun `Should generate receipt if vehicle is unparked`() {
         val expectedReceiptNumber = "R-1"
-        val expectedFees = 100
+        val expectedFees = 0
 
         addSlotsToLot(50)
         val ticket = ParkingLot().parkVehicle()
         val receipt = ParkingLot().unparkVehicle(ticket.spotNumber)
 
-        assertEquals(expectedReceiptNumber, receipt.Id)
+        assertEquals(expectedReceiptNumber, receipt.id)
         assertEquals(expectedFees, receipt.fees)
     }
 }

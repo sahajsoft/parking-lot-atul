@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParkingLotTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-02-17T04:49:48" hostname="Atuls-MBP.bbrouter" time="0.023">
+<testsuite name="ParkingLotTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-02-17T04:57:26" hostname="Atuls-MBP.bbrouter" time="0.023">
   <properties/>
   <testcase name="Should add 100 slots to parking lot()" classname="ParkingLotTest" time="0.017"/>
-  <testcase name="Should generate receipt if vehicle is unparked()" classname="ParkingLotTest" time="0.003"/>
-  <testcase name="Should return free slotNumber if slot is not occupied()" classname="ParkingLotTest" time="0.001"/>
-  <testcase name="Should return 3 as free slotNumber for parking if slotNumber 1 an 2 are occupied()" classname="ParkingLotTest" time="0.0"/>
-  <testcase name="Should generate ticket if vehicle parking is done()" classname="ParkingLotTest" time="0.001"/>
-  <testcase name="Should add 50 slots to parking lot()" classname="ParkingLotTest" time="0.0"/>
+  <testcase name="Should generate receipt if vehicle is unparked()" classname="ParkingLotTest" time="0.002"/>
+  <testcase name="Should return free slotNumber if slot is not occupied()" classname="ParkingLotTest" time="0.0"/>
+  <testcase name="Should return 3 as free slotNumber for parking if slotNumber 1 an 2 are occupied()" classname="ParkingLotTest" time="0.001"/>
+  <testcase name="Should generate ticket if vehicle parking is done()" classname="ParkingLotTest" time="0.0"/>
+  <testcase name="Should add 50 slots to parking lot()" classname="ParkingLotTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,28 +1,27 @@
 import models.Receipt
 import models.Ticket
-import ParkingLot
 import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
 
 class Operator {
     companion object {
         var ticketId = 1
-        val chargeForAnHour = 10
+        const val CHARGE_FOR_AN_HOUR = 10
     }
 
     fun generateTicket(slotNumber: Int): Ticket {
         val entryDateTime = LocalDateTime.now()
-        val ticket = Ticket(ticketId++, slotNumber, entryDateTime)
 
-        return ticket
+        return Ticket(ticketId++, slotNumber, entryDateTime)
     }
 
     fun generateReceipt(ticket: Ticket): Receipt {
         val exitDateTime = LocalDateTime.now()
-        val Id = "R-" + ticket.Id.toString()
-        val fees = calculateFees(10, chargeForAnHour)
-        val receipt = Receipt(Id, ticket.entryDateTime, exitDateTime, fees)
+        val id = "R-" + ticket.Id.toString()
+        val totalHours: Int = ChronoUnit.HOURS.between(exitDateTime, ticket.entryDateTime).toInt()
+        val fees = calculateFees(totalHours, CHARGE_FOR_AN_HOUR)
 
-        return receipt
+        return Receipt(id, ticket.entryDateTime, exitDateTime, fees)
     }
 
     private fun calculateFees(numberOfHours: Int, chargeForAnHour: Int): Int {
