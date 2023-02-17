@@ -61,7 +61,7 @@ class ParkingLotTest {
         addSlotsToLot(100)
         val ticket = ParkingLot().parkVehicle()
 
-        assertEquals(expectedTicketId, ticket.Id)
+        assertEquals(expectedTicketId, ticket.id)
         assertEquals(expectedSpotNumber, ticket.spotNumber)
     }
 

@@ -17,15 +17,16 @@ class Operator {
 
     fun generateReceipt(ticket: Ticket): Receipt {
         val exitDateTime = LocalDateTime.now()
-        val id = "R-" + ticket.Id.toString()
+        val id = "R-" + ticket.id.toString()
         val totalHours: Int = ChronoUnit.HOURS.between(exitDateTime, ticket.entryDateTime).toInt()
-        val fees = calculateFees(totalHours, CHARGE_FOR_AN_HOUR)
+
+        val fees = calculateFees(totalHours)
 
         return Receipt(id, ticket.entryDateTime, exitDateTime, fees)
     }
 
-    private fun calculateFees(numberOfHours: Int, chargeForAnHour: Int): Int {
-        return numberOfHours * chargeForAnHour
+    private fun calculateFees(numberOfHours: Int): Int {
+        return numberOfHours * CHARGE_FOR_AN_HOUR
     }
 
     fun resetTicketIds() {
