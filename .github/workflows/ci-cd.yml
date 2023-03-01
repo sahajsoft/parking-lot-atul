@@ -39,8 +39,8 @@ jobs:
         working-directory: ./infra-build
         run: |
           touch .tfvars
-          echo "access_key=${{ secrets.ACCESS_KEY }}" >> .tfvars
-          echo "secret_key=${{ secrets.SECRET_KEY }}" >> .tfvars
+          echo "access_key='${{ secrets.ACCESS_KEY }}'" >> .tfvars
+          echo "secret_key='${{ secrets.SECRET_KEY }}'" >> .tfvars
 
       - name: Create infrastructure
         working-directory: ./infra-build
