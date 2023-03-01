@@ -45,6 +45,6 @@ jobs:
       - name: Create infrastructure
         working-directory: ./infra-build
         run: |
-          terraform init 
+          terraform init -backend-config=.tfvars
           terraform plan -var-file '.tfvars'
           terraform apply -auto-approve -var-file '.tfvars'
