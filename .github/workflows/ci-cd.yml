@@ -34,6 +34,10 @@ jobs:
           export TF_VAR_secret_key=${{ secrets.SECRET_KEY }}
           export access_key=${{ secrets.ACCESS_KEY }}
           export secret_key=${{ secrets.SECRET_KEY }}
+          echo $TF_VAR_access_key
+          echo $TF_VAR_secret_key
+          echo $access_key
+          echo $secret_key
 
       - name: Install terraform
         run: |
@@ -45,10 +49,6 @@ jobs:
       - name: Create infrastructure
         working-directory: ./infra-build
         run: |
-          echo $TF_VAR_access_key
-          echo $TF_VAR_secret_key
-          echo $access_key
-          echo $secret_key
           terraform init 
           terraform plan 
           terraform apply
