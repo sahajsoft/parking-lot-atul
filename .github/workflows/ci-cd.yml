@@ -28,17 +28,6 @@ jobs:
       - name: Build
         run: ./gradlew clean build
 
-      - name: Add variables to environment
-        run: |
-          export TF_VAR_access_key=${{ secrets.ACCESS_KEY }} 
-          export TF_VAR_secret_key=${{ secrets.SECRET_KEY }}
-          export access_key=${{ secrets.ACCESS_KEY }}
-          export secret_key=${{ secrets.SECRET_KEY }}
-          echo $TF_VAR_access_key
-          echo $TF_VAR_secret_key
-          echo $access_key
-          echo $secret_key
-
       - name: Install terraform
         run: |
           sudo apt-get install unzip
@@ -46,9 +35,16 @@ jobs:
           unzip terraform_1.3.9_linux_amd64.zip 
           sudo mv terraform /usr/local/bin/
 
+      - name: Create terraform variables file
+        working-directory: ./infra-build
+        run: |
+          touch .tfvars
+          echo "access_key=${{ secrets.ACCESS_KEY }}" >> .tfvars
+          echo "secret_key=${{ secrets.SECRET_KEY }}" >> .tfvars
+
       - name: Create infrastructure
         working-directory: ./infra-build
         run: |
           terraform init 
-          terraform plan 
-          terraform apply
+          terraform plan -var-file '.tfvars'
+          terraform apply -var-file '.tfvars'
