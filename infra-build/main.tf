@@ -6,6 +6,12 @@ terraform {
         }
     }
     required_version = ">= 1.2.0"
+
+    backend "s3" {
+        bucket = "gurukul-atul"
+        key = "atul/s3/terraform.tfstate"
+        region = "us-west-2"
+    }
 }
 
 variable "access_key" {
@@ -20,6 +26,10 @@ provider "aws" {
     region = "us-west-2"
     access_key = "${ var.access_key }"
     secret_key = "${ var.secret_key }"
+}
+
+resource "aws_s3_bucket" "terraform-state" {
+    bucket = "gurukul-atul"
 }
 
 resource "aws_instance" "app_server" {
